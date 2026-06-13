@@ -1,0 +1,54 @@
+<section class="space-y-6">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <dot-badge variant="outline">Dashboard</dot-badge>
+          <h1 class="mt-3 text-4xl font-semibold tracking-tight">Analytics dashboard layout</h1>
+          <p class="mt-2 max-w-2xl text-sm leading-6 text-zinc-600">
+            A clean dashboard reference for metrics, alerts, and task tracking.
+          </p>
+        </div>
+        <dot-button variant="solid">Create report</dot-button>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <dot-stat-card label="Revenue" value="$48.2k" trend="+12% this month"></dot-stat-card>
+        <dot-stat-card label="Users" value="12.4k" trend="+4% this week"></dot-stat-card>
+        <dot-stat-card label="Conversions" value="3.8%" trend="+0.6% yesterday"></dot-stat-card>
+        <dot-stat-card label="Open tasks" value="28" trend="8 due today"></dot-stat-card>
+      </div>
+
+      <div class="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+        <dot-chart
+          title="Weekly performance"
+          description="A simple line chart for trends."
+          summary="Up 18%"
+          [values]="[12, 18, 22, 19, 28, 31, 39]"
+        ></dot-chart>
+
+        <dot-card title="Alerts" description="Good, caution, and error states for dashboards.">
+          <div class="space-y-3">
+            <dot-alert tone="success" title="All systems operational" description="Your primary workflows are running normally."></dot-alert>
+            <dot-alert tone="warning" title="Usage is rising" description="Storage is at 82 percent. Consider cleanup."></dot-alert>
+            <dot-alert tone="error" title="Payment issue" description="One payment provider needs attention."></dot-alert>
+          </div>
+        </dot-card>
+      </div>
+
+      <div class="grid gap-6 xl:grid-cols-2">
+        <dot-card title="Tasks" description="A compact activity list for dashboard layouts.">
+          <div class="space-y-3">
+            <dot-list-item title="Review design tokens" description="Make sure colors and spacing stay consistent." meta="Today"></dot-list-item>
+            <dot-list-item title="Prepare release notes" description="Summarize the latest product updates." meta="Tomorrow"></dot-list-item>
+            <dot-list-item title="Check analytics" description="Verify the key metrics after deployment." meta="This week"></dot-list-item>
+          </div>
+        </dot-card>
+
+        <dot-card title="Progress" description="Useful for project health and completion views.">
+          <div class="space-y-4">
+            <dot-progress label="Design" [value]="78"></dot-progress>
+            <dot-progress label="Development" [value]="56"></dot-progress>
+            <dot-progress label="Review" [value]="32"></dot-progress>
+          </div>
+        </dot-card>
+      </div>
+    </section>
