@@ -1,0 +1,15 @@
+<button
+  type="button"
+  class="group inline-flex items-center gap-3 text-sm text-black transition disabled:cursor-not-allowed disabled:opacity-50"
+  [disabled]="disabled()"
+  (click)="toggle()"
+>
+  <span [class]="boxClass()">
+    @if (checked()) {
+      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12.5l4 4L19 7.5"></path>
+      </svg>
+    }
+  </span>
+  <span>{{ label() }}</span>
+</button>

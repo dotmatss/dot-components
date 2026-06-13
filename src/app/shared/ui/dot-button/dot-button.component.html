@@ -1,0 +1,18 @@
+@if (href()) {
+  <a
+    [attr.href]="href()"
+    [class]="buttonClass()"
+    (click)="pressed.emit()"
+  >
+    <ng-content></ng-content>
+  </a>
+} @else {
+  <button
+    [attr.type]="type()"
+    [disabled]="disabled()"
+    [class]="buttonClass()"
+    (click)="pressed.emit()"
+  >
+    <ng-content></ng-content>
+  </button>
+}

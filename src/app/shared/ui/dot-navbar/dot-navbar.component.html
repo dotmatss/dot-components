@@ -1,0 +1,85 @@
+<header [class]="shellClass()">
+  <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+    <div class="flex items-center gap-4">
+      <dot-app-icon [label]="brand() + ' icon'" size="sm"></dot-app-icon>
+      <div>
+        <p class="text-base font-semibold tracking-tight" [class]="brandTitleClass()">{{ brand() }}</p>
+        <p class="text-xs uppercase tracking-[0.22em]" [class]="brandTaglineClass()">{{ tagline() }}</p>
+      </div>
+    </div>
+
+    <div class="flex min-w-0 flex-1 flex-wrap items-center gap-2">
+      @for (link of links(); track link.label) {
+        @if (link.menu?.length) {
+          <div
+            [class]="triggerWrapClass()"
+            (mouseenter)="open(link.label)"
+            (mouseleave)="closeMenu()"
+            (focusin)="open(link.label)"
+          >
+            <button
+              type="button"
+              [class]="menuButtonClass()"
+              [attr.aria-expanded]="isMenuOpen(link.label)"
+              [attr.aria-haspopup]="'menu'"
+            >
+              <span>{{ link.label }}</span>
+              <svg
+                viewBox="0 0 20 20"
+                class="h-4 w-4 transition"
+                [class.rotate-180]="isMenuOpen(link.label)"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 8l4 4 4-4"></path>
+              </svg>
+            </button>
+
+            @if (isMenuOpen(link.label)) {
+              <div
+                [class]="menuPanelWrapClass()"
+                role="menu"
+                (mouseenter)="open(link.label)"
+                (mouseleave)="closeMenu()"
+              >
+                <div [class]="panelClass()">
+                  <div class="grid items-start gap-6 lg:grid-cols-3">
+                    @for (section of link.menu ?? []; track section.title) {
+                      <div class="min-w-0">
+                        <dot-navigation-menu
+                          [title]="section.title"
+                          [items]="section.items"
+                          tone="dark"
+                          variant="inline"
+                        ></dot-navigation-menu>
+                      </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        } @else if (link.href) {
+          <a [href]="link.href" [class]="linkClass()">{{ link.label }}</a>
+        } @else {
+          <span [class]="linkClass()">{{ link.label }}</span>
+        }
+      }
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      @if (actions().length) {
+        @for (action of actions(); track action.label) {
+          <dot-button [variant]="action.variant ?? 'outline'" size="md" [href]="action.href">{{ action.label }}</dot-button>
+        }
+      } @else {
+        <dot-button variant="solid" size="md">Get started</dot-button>
+      }
+    </div>
+  </div>
+</header>
+

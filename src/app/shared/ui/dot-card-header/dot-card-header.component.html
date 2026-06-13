@@ -1,0 +1,19 @@
+<div [class]="headerClass()">
+  @if (eyebrow()) {
+    <p class="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">
+      {{ eyebrow() }}
+    </p>
+  }
+  <div class="space-y-1">
+    @if (title()) {
+      <h3 class="text-xl font-semibold tracking-tight text-black">
+        {{ title() }}
+      </h3>
+    }
+    @if (description()) {
+      <p class="text-sm leading-6 text-zinc-600">
+        {{ description() }}
+      </p>
+    }
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="rounded-3xl border border-zinc-200 bg-white p-3">
+  <div class="flex flex-wrap gap-2">
+    @for (tab of tabs(); track tab.label; let index = $index) {
+      <button
+        type="button"
+        (click)="setActive(index)"
+        [class]="tabClass(index)"
+      >
+        {{ tab.label }}
+      </button>
+    }
+  </div>
+
+  <div class="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+    <p class="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">Active tab</p>
+    @if (activeTab(); as activeTab) {
+      <p class="mt-2 text-sm leading-7 text-black">{{ activeTab.value }}</p>
+    }
+  </div>
+</div>

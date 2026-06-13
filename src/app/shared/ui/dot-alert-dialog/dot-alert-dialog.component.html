@@ -1,0 +1,14 @@
+@if (open()) {
+  <div class="fixed inset-0 z-30 flex items-center justify-center bg-black/40 p-4">
+    <div class="w-full max-w-md rounded-[28px] border border-zinc-200 bg-white p-6 shadow-[0_30px_80px_rgba(0,0,0,0.24)]">
+      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">Alert dialog</p>
+      <h3 class="mt-2 text-2xl font-semibold tracking-tight text-black">{{ title() }}</h3>
+      <p class="mt-2 text-sm leading-6 text-zinc-600">{{ description() }}</p>
+      <div class="mt-6 flex justify-end gap-3">
+        <dot-button variant="outline" size="sm" (pressed)="cancel.emit()">Cancel</dot-button>
+        <dot-button variant="solid" size="sm" (pressed)="confirm.emit()">{{ actionLabel() }}</dot-button>
+      </div>
+    </div>
+  </div>
+}
+

@@ -1,0 +1,11 @@
+<div [class]="alertClass()">
+  <div class="flex items-start gap-3">
+    <div [class]="iconClass()">
+      {{ icon() }}
+    </div>
+    <div class="min-w-0">
+      <p class="text-sm font-semibold text-black">{{ title() }}</p>
+      <p class="mt-1 text-sm leading-6 text-zinc-600">{{ description() }}</p>
+    </div>
+  </div>
+</div>

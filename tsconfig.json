@@ -3,6 +3,42 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@components/*": [
+        "src/app/shared/ui/*"
+      ],
+      "@component/*": [
+        "src/app/shared/ui/*"
+      ],
+      "@forms/*": [
+        "src/app/shared/forms/*"
+      ],
+      "@form/*": [
+        "src/app/shared/forms/*"
+      ],
+      "@examples/*": [
+        "src/app/features/examples/*"
+      ],
+      "@features/*": [
+        "src/app/features/examples/*"
+      ],
+      "@services/*": [
+        "src/app/core/services/*"
+      ],
+      "@service/*": [
+        "src/app/core/services/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,

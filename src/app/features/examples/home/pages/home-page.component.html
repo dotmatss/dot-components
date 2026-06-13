@@ -1,0 +1,818 @@
+<main class="relative min-h-screen overflow-hidden bg-white text-black transition-colors duration-300 dark:bg-zinc-950 dark:text-zinc-100">
+  <div class="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.08),_transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_55%)]"></div>
+  <div class="absolute -left-24 top-24 h-64 w-64 rounded-full border border-black/10 dark:border-white/10"></div>
+  <div class="absolute right-[-4rem] top-1/3 h-80 w-80 rounded-full border border-black/10 dark:border-white/10"></div>
+
+  <section class="relative mx-auto flex min-h-screen w-full max-w-[1600px] flex-col gap-10 px-6 py-8 lg:px-10 lg:py-10">
+    <dot-navbar
+      brand="Personal AI Assistant"
+      tagline="Monochrome design system"
+      tone="dark"
+      defaultOpenMenu="Products"
+      [links]="navLinks"
+      [actions]="[
+        { label: 'Ask AI', href: '#components', variant: 'outline' },
+        { label: 'Log In', href: '#forms', variant: 'outline' },
+        { label: 'Sign Up', href: '#data', variant: 'solid' }
+      ]"
+    />
+
+    <section class="space-y-8">
+      <section class="relative overflow-hidden rounded-[36px] border border-zinc-200 bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.08),_transparent_45%),linear-gradient(180deg,#ffffff_0%,#fafafa_100%)] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.06)] lg:p-10 dark:border-zinc-800 dark:bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_45%),linear-gradient(180deg,#09090b_0%,#111111_100%)] dark:shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+        <div class="absolute -right-20 top-10 h-64 w-64 rounded-full border border-black/10 dark:border-white/10"></div>
+        <div class="absolute -left-12 bottom-0 h-48 w-48 rounded-full border border-black/10 dark:border-white/10"></div>
+
+        <div class="relative grid gap-8 xl:grid-cols-[1.15fr_0.85fr] xl:items-center">
+          <div class="space-y-6">
+            <div class="flex flex-wrap items-center gap-3">
+              <dot-badge variant="outline">shadcn-inspired</dot-badge>
+              <span class="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300">
+                Home
+              </span>
+            </div>
+
+            <div class="space-y-4">
+              <h1 class="max-w-4xl text-4xl font-semibold tracking-tight text-black dark:text-zinc-50 sm:text-5xl lg:text-6xl">
+                The landing page before the sidebar.
+              </h1>
+              <p class="max-w-2xl text-base leading-7 text-zinc-600 dark:text-zinc-300 sm:text-lg">
+                This gives the home route a proper entry point so you can scan example layouts, then jump into the component browser when you are ready.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <dot-button variant="solid" size="lg" href="#components">View components</dot-button>
+              <dot-button variant="outline" size="lg" href="/landing">Open landing page</dot-button>
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-3 xl:grid-cols-1">
+            @for (stat of stats; track stat.label) {
+              <dot-stat-card [label]="stat.label" [value]="stat.value"></dot-stat-card>
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap gap-2">
+          @for (tab of landingTabs; track tab.label) {
+            <a
+              [href]="tab.href"
+              class="rounded-full border px-4 py-2 text-sm font-semibold transition"
+              [class]="tab.active
+                ? 'border-black bg-black text-white dark:border-zinc-100 dark:bg-zinc-100 dark:text-black'
+                : 'border-zinc-200 bg-white text-zinc-600 hover:border-black hover:text-black dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:text-zinc-50'"
+            >
+              {{ tab.label }}
+            </a>
+          }
+        </div>
+
+        <div class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+          Quick previews for dashboards, forms, and states.
+        </div>
+      </section>
+
+      <section class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        @for (card of landingCards; track card.title) {
+          <a
+            [href]="card.href"
+            class="group rounded-[28px] border border-zinc-200 bg-white p-6 shadow-[0_18px_50px_rgba(0,0,0,0.05)] transition hover:-translate-y-1 hover:border-black hover:shadow-[0_24px_70px_rgba(0,0,0,0.08)] dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-[0_18px_50px_rgba(0,0,0,0.28)]"
+          >
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400">{{ card.eyebrow }}</p>
+            <p class="mt-3 text-xl font-semibold tracking-tight text-black dark:text-zinc-50">{{ card.title }}</p>
+            <p class="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">{{ card.description }}</p>
+            <div class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-black dark:text-zinc-100">
+              Explore
+              <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span>
+            </div>
+          </a>
+        }
+      </section>
+    </section>
+
+    <dot-separator />
+
+    <div id="components" class="grid gap-8 xl:grid-cols-[320px_minmax(0,1fr)]">
+      <aside class="space-y-4 xl:sticky xl:top-8 xl:self-start">
+        <dot-card
+          eyebrow="Component library"
+          title="Browse and jump"
+          description="Use this sidebar to move around the system without scrolling through the whole page."
+        >
+          <div class="space-y-3">
+            @for (section of componentSections; track section.label) {
+              <a
+                [href]="section.href"
+                class="flex items-center justify-between rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm font-medium text-black transition hover:border-black hover:bg-white"
+              >
+                <span>{{ section.label }}</span>
+                <span class="rounded-full bg-white px-2 py-1 text-xs text-zinc-500">{{ section.count }}</span>
+              </a>
+            }
+          </div>
+
+          <div class="mt-6 space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Included components</p>
+            <div class="flex flex-wrap gap-2">
+              @for (pill of componentPills; track pill) {
+                <span class="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-700">
+                  {{ pill }}
+                </span>
+              }
+            </div>
+          </div>
+        </dot-card>
+      </aside>
+
+      <div class="grid gap-8 xl:grid-cols-2">
+      <dot-card
+        id="foundation"
+        eyebrow="01. Foundation"
+        title="Color tokens and typography"
+        description="A clear base makes the rest of the system easier to read."
+      >
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Colors</p>
+            <div class="space-y-3">
+              @for (color of colors; track color.name) {
+                <dot-color-swatch [name]="color.name" [value]="color.value" [tone]="color.tone"></dot-color-swatch>
+              }
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Typography</p>
+            <div class="rounded-3xl border border-zinc-200 bg-zinc-50 p-5">
+              <div class="text-5xl font-semibold tracking-tight">Aa</div>
+              <div class="mt-4 space-y-2">
+                <p class="text-base font-semibold text-black">Inter</p>
+                <p class="text-2xl font-semibold tracking-tight">H1 Heading</p>
+                <p class="text-xl font-semibold tracking-tight">H2 Heading</p>
+                <p class="text-lg font-medium">Body Large</p>
+                <p class="text-sm text-zinc-600">Body Medium</p>
+                <p class="text-xs uppercase tracking-[0.18em] text-zinc-500">Caption</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="buttons"
+        eyebrow="02. Buttons"
+        title="Primary and secondary actions"
+        description="Buttons are larger now so the states read clearly on the page."
+      >
+        <div class="space-y-6">
+          <div class="grid gap-4">
+            @for (button of buttonVariants; track button.label) {
+              <div class="flex items-center justify-between gap-5 rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4">
+                  <div>
+                    <p class="text-sm font-semibold text-black">{{ button.label }}</p>
+                    <p class="text-sm text-zinc-600">
+                      {{
+                        button.variant === 'solid'
+                          ? 'Strong primary action'
+                          : button.variant === 'outline'
+                            ? 'Subtle bordered action'
+                            : button.variant === 'error'
+                              ? 'Destructive action'
+                              : 'Minimal text action'
+                      }}
+                    </p>
+                  </div>
+                  <dot-button [variant]="button.variant">{{ button.label }}</dot-button>
+              </div>
+            }
+          </div>
+
+          <dot-separator />
+
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Small controls</p>
+            <div class="flex flex-wrap gap-3">
+              <dot-button variant="outline" size="sm">+</dot-button>
+              <dot-button variant="outline" size="sm">-</dot-button>
+              <dot-button variant="outline" size="sm">&gt;</dot-button>
+              <dot-button variant="ghost" size="sm">Cancel</dot-button>
+              <dot-button variant="ghost" size="sm">View all</dot-button>
+            </div>
+          </div>
+
+          <dot-separator />
+
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Icon buttons</p>
+            <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              @for (iconButton of iconButtons; track iconButton.label) {
+                <div class="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white px-4 py-3">
+                  <dot-icon-button
+                    [icon]="iconButton.icon"
+                    [label]="iconButton.label"
+                    [variant]="iconButton.variant"
+                  ></dot-icon-button>
+                  <div>
+                    <p class="text-sm font-semibold text-black">{{ iconButton.label }}</p>
+                    <p class="text-sm text-zinc-600">Compact action button</p>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="forms"
+        eyebrow="03. Forms"
+        title="Inputs and selects"
+        description="Clear labels and generous spacing make the fields easier to scan."
+      >
+        <div id="inputs" class="grid gap-4 lg:grid-cols-2">
+          <dot-input label="Default" placeholder="Type something..." hint="Default text field" />
+          <dot-input label="Focused" placeholder="Type something..." />
+          <dot-input label="Filled" value="John Doe" />
+          <dot-input label="Disabled" placeholder="Type something..." [disabled]="true" />
+          <dot-input label="Error" placeholder="Type something..." error="This field is required" />
+          <dot-input label="Email" type="email" placeholder="Enter your email..." />
+        </div>
+
+        <div class="mt-5 grid gap-4">
+          <dot-textarea label="Textarea" placeholder="Write your message here..." hint="Use this for longer content." />
+          <dot-select label="Select dropdown" placeholder="Select an option" [options]="selectOptions"></dot-select>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="selection"
+        eyebrow="04. Selection"
+        title="Checkbox, radio, and toggle"
+        description="Each control is shown with enough room to see its state."
+      >
+        <div class="grid gap-6 lg:grid-cols-3">
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Checkbox</p>
+            <div class="space-y-3 rounded-3xl border border-zinc-200 bg-zinc-50 p-4">
+              @for (item of selectionChecks; track item.label) {
+                <dot-checkbox [label]="item.label" [checked]="item.checked" [disabled]="item.disabled"></dot-checkbox>
+              }
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Radio</p>
+            <div class="space-y-3 rounded-3xl border border-zinc-200 bg-zinc-50 p-4">
+              @for (item of radioOptions; track item.label) {
+                <dot-radio [label]="item.label" [selected]="item.selected" [disabled]="item.disabled"></dot-radio>
+              }
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Toggle</p>
+            <div class="space-y-4 rounded-3xl border border-zinc-200 bg-zinc-50 p-4">
+              @for (item of toggleStates; track item.label) {
+                <div class="flex items-center justify-between gap-4">
+                  <span class="text-sm font-medium text-black">{{ item.label }}</span>
+                  <dot-toggle [on]="item.on" [disabled]="item.disabled"></dot-toggle>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="tags"
+        eyebrow="05. Tags"
+        title="Tags and badges"
+        description="Small tokens help group content without overwhelming the layout."
+      >
+        <div class="space-y-6">
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Tags</p>
+            <div class="flex flex-wrap gap-2">
+              @for (chip of chipVariants; track chip.label) {
+                <dot-chip [selected]="chip.selected">{{ chip.label }}</dot-chip>
+              }
+            </div>
+          </div>
+
+            <div class="space-y-3">
+              <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Badges</p>
+              <div class="flex flex-wrap gap-2">
+                @for (badge of badgeVariants; track badge.label) {
+                  <dot-badge [variant]="badge.variant" [tone]="badge.tone">{{ badge.label }}</dot-badge>
+                }
+              </div>
+            </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="app-icons"
+        eyebrow="06. App icons"
+        title="Brand mark preview"
+        description="The icon is shown on both light and dark surfaces so it stays readable in navigation and headers."
+      >
+        <div class="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="flex items-center justify-center rounded-[28px] border border-zinc-200 bg-zinc-50 p-8">
+            <div class="flex flex-col items-center gap-4 text-center">
+              <dot-app-icon size="lg" label="Personal AI Assistant app icon"></dot-app-icon>
+              <div class="space-y-1">
+                <p class="text-lg font-semibold text-black">Personal AI Assistant</p>
+                <p class="text-sm text-zinc-600">Used for nav, branding, and compact labels.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="rounded-[28px] bg-black p-6 text-white">
+              <div class="flex items-center gap-4">
+                <dot-app-icon size="md" label="Personal AI Assistant icon on dark background"></dot-app-icon>
+                <div>
+                  <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/70">Dark surface</p>
+                  <p class="mt-1 text-base font-semibold">Clear contrast for headers and nav bars.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-[28px] border border-zinc-200 bg-white p-6">
+              <div class="flex items-center gap-4">
+                <dot-app-icon size="sm" label="Personal AI Assistant small app icon"></dot-app-icon>
+                <div>
+                  <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Small surface</p>
+                  <p class="mt-1 text-base font-semibold text-black">Works well inside compact navigation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="cards"
+        eyebrow="07. Cards"
+        title="Single card component"
+        description="A single dot-card can handle the header, content, and footer with simple conditions."
+      >
+        <div class="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+          <dot-card
+            className="shadow-none"
+            eyebrow="Project card"
+            title="Personal AI Assistant"
+            description="This example uses one card component with optional sections."
+            footer="Updated just now"
+          >
+            <p class="text-sm leading-6 text-zinc-600">
+              Keep the header for the title and summary, use content for the main body, and keep the footer for actions or metadata.
+            </p>
+          </dot-card>
+
+          <div class="space-y-4">
+            @for (card of cards; track card.title) {
+              <dot-card [title]="card.title" [description]="card.description" [className]="card.className"></dot-card>
+            }
+            <div class="rounded-[28px] border border-black bg-black p-6 text-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">Filled Card</p>
+              <p class="mt-3 text-lg font-medium leading-7">
+                This card has a filled background for emphasis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="lists"
+        eyebrow="08. Lists and avatars"
+        title="Rows and people"
+        description="A clearer list layout helps the text and avatars stand out."
+      >
+        <div class="space-y-3">
+          @for (item of listItems; track item.title) {
+            <dot-list-item [title]="item.title" [description]="item.description || ''" [meta]="item.meta || ''" [avatar]="item.avatar || ''"></dot-list-item>
+          }
+        </div>
+
+        <div class="mt-6 space-y-3">
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Avatars</p>
+          <div class="flex flex-wrap items-center gap-3">
+            @for (name of avatarNames; track name) {
+              <dot-avatar [name]="name" [status]="true"></dot-avatar>
+            }
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="dialogs"
+        eyebrow="09. Dialogs"
+        title="Focused confirmation surfaces"
+        description="Dialogs keep the action, message, and footer together so the decision stays easy to scan."
+      >
+        <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="space-y-4 rounded-[28px] border border-zinc-200 bg-zinc-50 p-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Dialog preview</p>
+            <p class="text-lg font-semibold text-black">A dialog should feel focused and compact.</p>
+            <p class="text-sm leading-6 text-zinc-600">
+              Keep the content short, use a clear title, and make the confirm action obvious.
+            </p>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <dot-button variant="outline" size="sm">Cancel</dot-button>
+              <dot-button variant="solid" size="sm">Delete task</dot-button>
+            </div>
+          </div>
+
+          <dot-dialog
+            title="Delete task"
+            description="This action cannot be undone."
+            actionLabel="Delete"
+            cancelLabel="Cancel"
+          >
+            <div class="rounded-3xl border border-zinc-200 bg-zinc-50 p-4">
+              <p class="text-sm leading-6 text-zinc-600">
+                Deleting this task removes it from the current project and archive.
+              </p>
+            </div>
+          </dot-dialog>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="dropdowns"
+        eyebrow="10. Dropdowns"
+        title="Action menus and choices"
+        description="Dropdowns are useful for grouped actions, quick context menus, and inline decisions."
+      >
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="space-y-4 rounded-[28px] border border-zinc-200 bg-zinc-50 p-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Quick actions</p>
+            <dot-dropdown
+              label="More actions"
+              heading="Select an action"
+              variant="outline"
+              [options]="dropdownOptions"
+              (changed)="selectedDropdownAction.set($event.value)"
+            ></dot-dropdown>
+            <p class="text-sm text-zinc-600">
+              Selected action: <span class="font-semibold text-black">{{ selectedDropdownAction() }}</span>
+            </p>
+          </div>
+
+          <div class="space-y-4 rounded-[28px] border border-zinc-200 bg-white p-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Destructive menu</p>
+            <dot-dropdown
+              label="Item menu"
+              heading="Item options"
+              variant="solid"
+              [options]="dropdownOptions"
+            ></dot-dropdown>
+            <div class="rounded-3xl border border-zinc-200 bg-zinc-50 p-4">
+              <p class="text-sm leading-6 text-zinc-600">
+                Use the dark trigger when you want the dropdown to feel more prominent.
+              </p>
+            </div>
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="alerts"
+        eyebrow="11. Alerts"
+        title="Success, warning, and error states"
+        description="Each alert uses a different border and message so the tone is obvious at a glance."
+      >
+        <div class="space-y-4">
+          @for (alert of alerts; track alert.title) {
+            <dot-alert [title]="alert.title" [description]="alert.description" [tone]="alert.tone"></dot-alert>
+          }
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="navigation"
+        eyebrow="12. Navigation"
+        title="Breadcrumbs, menus, and command surfaces"
+        description="These patterns help people move around the product and find actions quickly."
+      >
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="space-y-4">
+            <dot-breadcrumb [items]="breadcrumbItems"></dot-breadcrumb>
+            <dot-menubar [items]="menubarItems"></dot-menubar>
+            <dot-navigation-menu title="Primary links" [items]="navigationMenuItems"></dot-navigation-menu>
+          </div>
+
+          <div class="space-y-4">
+            <dot-command [items]="commandItems"></dot-command>
+            <dot-dropdown
+              label="More actions"
+              heading="Action menu"
+              variant="outline"
+              [options]="dropdownOptions"
+              (changed)="selectedDropdownAction.set($event.value)"
+            ></dot-dropdown>
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="data"
+        eyebrow="13. Data"
+        title="Charts, tables, calendars, and pagination"
+        description="Use these building blocks for dashboards and record-heavy screens."
+      >
+        <div class="grid gap-6 lg:grid-cols-2">
+          <dot-chart title="Weekly activity" description="A simple SVG line chart." summary="42 items" [values]="chartValues"></dot-chart>
+          <dot-table [columns]="tableColumns" [rows]="tableRows"></dot-table>
+        </div>
+
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
+          <dot-data-table title="Data table" description="Searchable rows with a lightweight filter." [columns]="dataTableColumns" [rows]="dataTableRows"></dot-data-table>
+          <div class="space-y-4">
+            <dot-calendar></dot-calendar>
+            <dot-date-picker label="Date picker"></dot-date-picker>
+            <dot-pagination
+              [currentPage]="currentPage()"
+              [totalPages]="5"
+              (pageSelected)="currentPage.set($event)"
+              (previous)="currentPage.set(currentPage() > 1 ? currentPage() - 1 : 1)"
+              (next)="currentPage.set(currentPage() < 5 ? currentPage() + 1 : 5)"
+            ></dot-pagination>
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        id="states"
+        eyebrow="14. States"
+        title="Accordions, collapsibles, sheets, and toasts"
+        description="These are the components that make the app feel responsive and alive."
+      >
+        <div class="grid gap-4 lg:grid-cols-3">
+          @for (item of skeletonCards; track item.title) {
+            <div class="rounded-[28px] border border-zinc-200 bg-zinc-50 p-5">
+              <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">{{ item.title }}</p>
+              <div class="mt-4">
+                <dot-skeleton [variant]="item.variant" [lines]="item.lines" [className]="item.className"></dot-skeleton>
+              </div>
+            </div>
+          }
+        </div>
+
+        <dot-separator className="my-6"></dot-separator>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          <dot-accordion [items]="accordionItems"></dot-accordion>
+
+          <div class="space-y-4">
+            <dot-collapsible title="More details">
+              This collapsible block is useful for secondary content, filters, and longer help text.
+            </dot-collapsible>
+
+            <div class="flex flex-wrap gap-3">
+              <dot-button-group
+                [items]="buttonGroupItems"
+                [selected]="selectedButtonGroup()"
+                (selectedChange)="selectedButtonGroup.set($event)"
+              ></dot-button-group>
+              <dot-radio-group
+                label="Update cadence"
+                [options]="radioGroupOptions"
+                [selected]="selectedRadioGroup()"
+                (selectedChange)="selectedRadioGroup.set($event)"
+              ></dot-radio-group>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
+          <dot-carousel title="Carousel" description="A simple rotating content surface." [items]="carouselItems"></dot-carousel>
+          <dot-empty-state
+            title="No results found"
+            description="Try a different filter or search term to continue."
+            actionLabel="Reset filters"
+            secondaryLabel="Learn more"
+          ></dot-empty-state>
+        </div>
+
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
+          <div class="space-y-4">
+            <div class="flex flex-wrap gap-3">
+              <dot-button variant="outline" size="sm" (pressed)="sheetOpen.set(true)">Open sheet</dot-button>
+              <dot-button variant="solid" size="sm" (pressed)="alertDialogOpen.set(true)">Open alert dialog</dot-button>
+            </div>
+
+            @if (toastVisible()) {
+              <dot-toast
+                title="Saved"
+                description="Your latest changes were stored successfully."
+                (dismiss)="toastVisible.set(false)"
+              ></dot-toast>
+            }
+          </div>
+
+          <div class="space-y-4">
+            <div class="rounded-[28px] border border-zinc-200 bg-zinc-50 p-6">
+              <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Sheet preview</p>
+              <p class="mt-2 text-sm leading-6 text-zinc-600">
+                Open the sheet button above to see the overlay behavior.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <dot-sheet [open]="sheetOpen()" title="Quick settings" (dismiss)="sheetOpen.set(false)">
+          <div class="space-y-4">
+            <p class="text-sm leading-6 text-zinc-600">
+              Sheets work well for focused editing and contextual actions.
+            </p>
+            <dot-breadcrumb [items]="breadcrumbItems"></dot-breadcrumb>
+          </div>
+        </dot-sheet>
+
+        <dot-alert-dialog
+          [open]="alertDialogOpen()"
+          title="Delete this item?"
+          description="This action cannot be undone."
+          actionLabel="Delete"
+          (cancel)="alertDialogOpen.set(false)"
+          (confirm)="alertDialogOpen.set(false)"
+        ></dot-alert-dialog>
+      </dot-card>
+
+      <dot-card
+        id="patterns"
+        eyebrow="15. Patterns"
+        title="Navigation and progress"
+        description="The remaining reusable patterns are grouped into one wide section for readability."
+      >
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="space-y-4">
+            <dot-navbar
+              brand="Personal AI Assistant"
+              tagline="Top navigation"
+              [links]="navLinks"
+              [actions]="[
+                { label: 'Open app', href: '#patterns', variant: 'solid' }
+              ]"
+            />
+            <dot-tabs [tabs]="tabItems"></dot-tabs>
+          </div>
+
+          <div class="space-y-4">
+            <dot-stat-card label="Total Tasks" value="128" trend="+12% from last week"></dot-stat-card>
+            <div class="space-y-4 rounded-[28px] border border-zinc-200 bg-zinc-50 p-6">
+              @for (item of progress; track item.label) {
+                <dot-progress [label]="item.label" [value]="item.value"></dot-progress>
+              }
+            </div>
+          </div>
+        </div>
+      </dot-card>
+
+      <dot-card
+        className="xl:col-span-12"
+        eyebrow="16. Reactive Form"
+        title="Angular Reactive Form"
+        description="This uses Angular's Reactive Forms API with live validation and submit handling."
+      >
+        <form class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]" [formGroup]="profileForm" (ngSubmit)="submitProfile()">
+          <div class="grid gap-4 lg:grid-cols-2">
+            <label class="block space-y-2 lg:col-span-1">
+              <span class="text-sm font-medium text-black">Full name</span>
+              <input
+                type="text"
+                formControlName="fullName"
+                [class]="fieldClass(profileForm.controls.fullName.touched && profileForm.controls.fullName.invalid)"
+                placeholder="John Doe"
+              />
+              @if (profileForm.controls.fullName.touched && profileForm.controls.fullName.invalid) {
+                <p class="text-xs font-semibold text-red-600">
+                  @if (profileForm.controls.fullName.errors?.['required']) {
+                    Full name is required.
+                  } @else if (profileForm.controls.fullName.errors?.['minlength']) {
+                    Full name must be at least 2 characters.
+                  }
+                </p>
+              }
+            </label>
+
+            <label class="block space-y-2 lg:col-span-1">
+              <span class="text-sm font-medium text-black">Email</span>
+              <input
+                type="email"
+                formControlName="email"
+                [class]="fieldClass(profileForm.controls.email.touched && profileForm.controls.email.invalid)"
+                placeholder="you@example.com"
+              />
+              @if (profileForm.controls.email.touched && profileForm.controls.email.invalid) {
+                <p class="text-xs font-semibold text-red-600">
+                  @if (profileForm.controls.email.errors?.['required']) {
+                    Email is required.
+                  } @else if (profileForm.controls.email.errors?.['email']) {
+                    Enter a valid email address.
+                  }
+                </p>
+              }
+            </label>
+
+            <label class="block space-y-2 lg:col-span-1">
+              <span class="text-sm font-medium text-black">Role</span>
+              <select
+                formControlName="role"
+                class="w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3.5 text-[15px] text-black shadow-sm transition focus:outline-none focus:ring-2 focus:ring-black/10"
+              >
+                <option value="designer">Designer</option>
+                <option value="developer">Developer</option>
+                <option value="founder">Founder</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+
+            <label class="block space-y-2 lg:col-span-1">
+              <span class="text-sm font-medium text-black">Newsletter</span>
+              <div class="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-4">
+                <input
+                  type="checkbox"
+                  formControlName="newsletter"
+                  class="h-4 w-4 rounded border-zinc-300 text-black focus:ring-black"
+                />
+                <span class="text-sm text-zinc-700">Send me product updates</span>
+              </div>
+            </label>
+
+            <label class="block space-y-2 lg:col-span-2">
+              <span class="text-sm font-medium text-black">Message</span>
+              <textarea
+                rows="5"
+                formControlName="message"
+                [class]="fieldClass(profileForm.controls.message.touched && profileForm.controls.message.invalid)"
+                placeholder="Tell us what you need..."
+              ></textarea>
+              @if (profileForm.controls.message.touched && profileForm.controls.message.invalid) {
+                <p class="text-xs font-semibold text-red-600">
+                  @if (profileForm.controls.message.errors?.['required']) {
+                    Message is required.
+                  } @else if (profileForm.controls.message.errors?.['minlength']) {
+                    Message must be at least 10 characters.
+                  }
+                </p>
+              }
+            </label>
+
+            <label class="flex items-start gap-3 rounded-2xl border border-zinc-200 bg-white px-4 py-4 lg:col-span-2">
+              <input
+                type="checkbox"
+                formControlName="agree"
+                [class]="checkboxClass(profileForm.controls.agree.touched && profileForm.controls.agree.invalid)"
+              />
+              <span class="text-sm text-zinc-700">
+                I agree to the terms and understand this form is powered by Angular Reactive Forms.
+              </span>
+            </label>
+
+            @if (profileForm.controls.agree.touched && profileForm.controls.agree.invalid) {
+              <p class="text-xs font-semibold text-red-600 lg:col-span-2">
+                You must accept the agreement before submitting.
+              </p>
+            }
+
+            <div class="flex flex-wrap gap-3 lg:col-span-2">
+              <dot-button type="submit" variant="solid">Submit form</dot-button>
+              <dot-button type="button" variant="outline" (click)="profileForm.reset({ fullName: '', email: '', role: 'designer', message: '', newsletter: true, agree: false })">
+                Reset
+              </dot-button>
+            </div>
+          </div>
+
+          <div class="space-y-4 rounded-[28px] border border-zinc-200 bg-zinc-50 p-6">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Live state</p>
+              <p class="mt-2 text-sm leading-6 text-zinc-600">
+                The form below updates the control state using Reactive Forms. If validation fails, the fields are marked and the errors appear inline.
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-zinc-200 bg-white p-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Status</p>
+              <p class="mt-2 text-lg font-semibold text-black">
+                {{ profileForm.valid ? 'Ready to submit' : 'Needs attention' }}
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-zinc-200 bg-white p-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Submitted data</p>
+              <pre class="mt-3 overflow-auto text-xs leading-6 text-zinc-700">{{ submittedProfile() || 'No submission yet.' }}</pre>
+            </div>
+          </div>
+        </form>
+      </dot-card>
+      </div>
+    </div>
+  </section>
+</main>
+

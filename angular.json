@@ -24,6 +24,11 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
+            "optimization": {
+              "scripts": true,
+              "styles": true,
+              "fonts": false
+            },
             "inlineStyleLanguage": "scss",
             "assets": [
               {

@@ -1,0 +1,20 @@
+<div [class]="itemClass()">
+  <div class="flex min-w-0 items-center gap-3">
+    @if (avatar()) {
+      <dot-avatar [name]="avatar()" size="sm"></dot-avatar>
+    }
+    <div class="min-w-0">
+      <p class="truncate text-[15px] font-semibold text-black">{{ title() }}</p>
+      @if (description()) {
+        <p class="truncate text-sm text-zinc-600">{{ description() }}</p>
+      }
+    </div>
+  </div>
+  <div class="flex items-center gap-2 text-sm font-medium text-zinc-500">
+    @if (meta()) {
+      <span>{{ meta() }}</span>
+    }
+    <span aria-hidden="true">></span>
+  </div>
+</div>
+

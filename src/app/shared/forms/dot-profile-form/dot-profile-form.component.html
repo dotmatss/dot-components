@@ -1,0 +1,88 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="space-y-5">
+  <div class="grid gap-4 lg:grid-cols-2">
+    <label class="space-y-2">
+      <span class="text-sm font-semibold text-black">Full name</span>
+      <input
+        type="text"
+        formControlName="fullName"
+        placeholder="Jane Doe"
+        class="w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3.5 text-[15px] text-black shadow-sm transition placeholder:text-zinc-500 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/10"
+      />
+      @if (isInvalid('fullName')) {
+        <p class="text-sm text-red-600">Full name is required.</p>
+      }
+    </label>
+
+    <label class="space-y-2">
+      <span class="text-sm font-semibold text-black">Email</span>
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="jane@example.com"
+        class="w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3.5 text-[15px] text-black shadow-sm transition placeholder:text-zinc-500 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/10"
+      />
+      @if (isInvalid('email')) {
+        <p class="text-sm text-red-600">Enter a valid email address.</p>
+      }
+    </label>
+  </div>
+
+  <label class="space-y-2">
+    <span class="text-sm font-semibold text-black">Role</span>
+    <div class="relative">
+      <select
+        formControlName="role"
+        class="w-full appearance-none rounded-2xl border border-zinc-300 bg-white px-4 py-3.5 pr-11 text-[15px] text-black shadow-sm transition focus:border-black focus:outline-none focus:ring-2 focus:ring-black/10"
+      >
+        @for (role of roleOptions; track role.value) {
+          <option [value]="role.value">{{ role.label }}</option>
+        }
+      </select>
+      <svg viewBox="0 0 24 24" class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="m6 9 6 6 6-6"></path>
+      </svg>
+    </div>
+  </label>
+
+  <label class="space-y-2">
+    <span class="text-sm font-semibold text-black">Message</span>
+    <textarea
+      rows="5"
+      formControlName="message"
+      placeholder="Tell us what you are building..."
+      class="w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3.5 text-[15px] text-black shadow-sm transition placeholder:text-zinc-500 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/10"
+    ></textarea>
+    @if (isInvalid('message')) {
+      <p class="text-sm text-red-600">Message is required.</p>
+    }
+  </label>
+
+  <div class="space-y-3 rounded-3xl border border-zinc-200 bg-zinc-50 p-4">
+    <label class="flex items-start gap-3">
+      <input
+        type="checkbox"
+        formControlName="newsletter"
+        class="mt-1 h-4 w-4 rounded border-zinc-300 text-black focus:ring-black"
+      />
+      <span class="text-sm leading-6 text-zinc-700">Send me occasional product updates.</span>
+    </label>
+
+    <label class="flex items-start gap-3">
+      <input
+        type="checkbox"
+        formControlName="agree"
+        class="mt-1 h-4 w-4 rounded border-zinc-300 text-black focus:ring-black"
+      />
+      <span class="text-sm leading-6 text-zinc-700">I agree to the terms and privacy policy.</span>
+    </label>
+
+    @if (isInvalid('agree')) {
+      <p class="text-sm text-red-600">You need to agree before submitting.</p>
+    }
+  </div>
+
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <p class="text-sm text-zinc-500">Built with Angular reactive forms and the dot UI primitives.</p>
+    <dot-button type="submit" variant="solid">Submit form</dot-button>
+  </div>
+</form>

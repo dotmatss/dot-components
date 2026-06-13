@@ -1,0 +1,15 @@
+@if (open()) {
+  <div class="fixed inset-0 z-20 bg-black/40" (click)="dismiss.emit()"></div>
+  <aside [class]="sheetClass()">
+    <div class="flex items-center justify-between gap-4 border-b border-zinc-200 px-6 py-5">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">Sheet</p>
+        <h3 class="text-xl font-semibold tracking-tight text-black">{{ title() }}</h3>
+      </div>
+      <button type="button" class="text-sm font-semibold text-zinc-500 transition hover:text-black" (click)="dismiss.emit()">x</button>
+    </div>
+    <div class="p-6">
+      <ng-content></ng-content>
+    </div>
+  </aside>
+}

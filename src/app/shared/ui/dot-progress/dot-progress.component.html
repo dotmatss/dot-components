@@ -1,0 +1,9 @@
+<div class="space-y-2">
+  <div class="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-zinc-500">
+    <span>{{ label() }}</span>
+    <span>{{ value() }}%</span>
+  </div>
+  <div class="h-3 rounded-full bg-zinc-200">
+    <div class="h-3 rounded-full bg-black transition-all" [style.width.%]="safeValue()"></div>
+  </div>
+</div>

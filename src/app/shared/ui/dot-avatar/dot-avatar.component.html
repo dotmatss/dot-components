@@ -1,0 +1,19 @@
+<div [class]="avatarClass()" [attr.title]="name()">
+  <div [class]="avatarSurfaceClass()">
+    @if (avatarSrc()) {
+      <img
+        [src]="avatarSrc()"
+        [alt]="name() || 'Avatar'"
+        class="h-full w-full object-cover grayscale contrast-125"
+        loading="lazy"
+        decoding="async"
+        (error)="onImageError()"
+      />
+    } @else {
+      <span class="text-sm font-semibold">{{ initials() }}</span>
+    }
+  </div>
+  @if (status()) {
+    <span class="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-black"></span>
+  }
+</div>

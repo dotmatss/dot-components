@@ -1,0 +1,20 @@
+<div
+  [class]="rootClass()"
+  role="status"
+  aria-live="polite"
+  [attr.aria-label]="label()"
+>
+  <span class="sr-only">{{ label() }}</span>
+
+  @if (variant() === 'text') {
+    <div class="space-y-3">
+      @for (line of textLines(); track line) {
+        <div class="h-4 rounded-full" [class]="[skeletonClass(), textLineWidths()[line]].join(' ')"></div>
+      }
+    </div>
+  } @else if (variant() === 'rect') {
+    <div class="h-full w-full rounded-3xl" [class]="skeletonClass()"></div>
+  } @else {
+    <div class="aspect-square h-full w-full rounded-full" [class]="skeletonClass()"></div>
+  }
+</div>

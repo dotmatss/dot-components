@@ -1,0 +1,93 @@
+﻿import { Component } from '@angular/core';
+import { UiAccordionComponent } from '@components/dot-accordion/dot-accordion.component';
+import { UiBadgeComponent } from '@components/dot-badge/dot-badge.component';
+import { UiButtonComponent } from '@components/dot-button/dot-button.component';
+import { UiCardComponent } from '@components/dot-card/dot-card.component';
+import { UiCollapsibleComponent } from '@components/dot-collapsible/dot-collapsible.component';
+import { UiNavigationMenuComponent } from '@components/dot-navigation-menu/dot-navigation-menu.component';
+
+@Component({
+  selector: 'app-layouts-page',
+  standalone: true,
+  imports: [UiAccordionComponent, UiBadgeComponent, UiButtonComponent, UiCardComponent, UiCollapsibleComponent, UiNavigationMenuComponent],
+  template: `
+    <section class="space-y-6">
+      <div>
+        <dot-badge variant="outline">Layouts</dot-badge>
+        <h1 class="mt-3 text-4xl font-semibold tracking-tight">Reference layouts for future projects</h1>
+        <p class="mt-2 max-w-2xl text-sm leading-6 text-zinc-600">
+          Use these blocks as starting points for dashboards, detail pages, and content-heavy screens.
+        </p>
+      </div>
+
+      <div class="grid gap-6 xl:grid-cols-2">
+        <dot-card title="Sidebar layout" description="Good for apps with many sections and persistent navigation.">
+          <div class="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)]">
+            <dot-navigation-menu
+              title="Workspace"
+              [items]="[
+                { label: 'Overview', href: '#' },
+                { label: 'Projects', href: '#' },
+                { label: 'Settings', href: '#' }
+              ]"
+            ></dot-navigation-menu>
+            <div class="rounded-[28px] border border-zinc-200 bg-zinc-50 p-5">
+              <p class="text-lg font-semibold text-black">Main content area</p>
+              <p class="mt-2 text-sm leading-6 text-zinc-600">
+                Keep the content panel clean and let the navigation handle section switching.
+              </p>
+            </div>
+          </div>
+        </dot-card>
+
+        <dot-card title="Split layout" description="Useful for forms or review screens.">
+          <div class="grid gap-4 lg:grid-cols-2">
+            <div class="rounded-[28px] border border-zinc-200 bg-zinc-50 p-5">
+              <p class="text-sm font-semibold uppercase tracking-[0.24em] text-zinc-500">Left panel</p>
+              <p class="mt-2 text-sm leading-6 text-zinc-600">Navigation, summary, or supporting text.</p>
+            </div>
+            <div class="rounded-[28px] border border-zinc-200 bg-black p-5 text-white">
+              <p class="text-sm font-semibold uppercase tracking-[0.24em] text-white/60">Right panel</p>
+              <p class="mt-2 text-sm leading-6 text-white/80">Primary task area or form surface.</p>
+            </div>
+          </div>
+        </dot-card>
+      </div>
+
+      <div class="grid gap-6 xl:grid-cols-2">
+        <dot-card title="Accordion block" description="Good for FAQ, help, or grouped details.">
+          <dot-accordion
+            [items]="[
+              { title: 'Section one', content: 'Use accordion blocks for grouped explanations.' },
+              { title: 'Section two', content: 'Keep each answer short and skimmable.' }
+            ]"
+          ></dot-accordion>
+        </dot-card>
+
+        <dot-card title="Sheet layout" description="Works well for contextual editing panels.">
+          <div class="rounded-[28px] border border-zinc-200 bg-zinc-50 p-5">
+            <p class="text-sm leading-6 text-zinc-600">
+              Sheets are ideal when you want focused side content without leaving the current page.
+            </p>
+            <div class="mt-4 flex justify-end">
+              <dot-button variant="outline" size="sm">Open sheet</dot-button>
+            </div>
+          </div>
+        </dot-card>
+      </div>
+
+      <dot-card title="Collapsible section" description="A lighter version for optional content.">
+        <dot-collapsible title="More details">
+          This area can hold secondary content, filters, or supporting explanation.
+        </dot-collapsible>
+      </dot-card>
+    </section>
+  `,
+})
+export class LayoutsPageComponent {}
+
+
+
+
+
+

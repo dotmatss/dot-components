@@ -1,0 +1,13 @@
+<nav [class]="shellClass()">
+  <p class="text-xs font-semibold uppercase tracking-[0.24em]" [class]="titleClass()">{{ title() }}</p>
+  <div class="mt-4 grid gap-2">
+    @for (item of items(); track item.label) {
+      <a [href]="item.href" [class]="itemClass()">
+        <span class="block text-sm font-semibold" [class]="itemLabelClass()">{{ item.label }}</span>
+        @if (item.description) {
+          <span class="mt-1 block text-sm leading-6" [class]="itemDescriptionClass()">{{ item.description }}</span>
+        }
+      </a>
+    }
+  </div>
+</nav>
